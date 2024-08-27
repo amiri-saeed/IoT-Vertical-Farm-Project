@@ -1,0 +1,115 @@
+ThingSpeak Adaptor Interfaces
+
+
+
+MQTT:
+
+PUBLISH:
+
+	publish from sensors to public-broker to be stored in thingspeak platform
+
+	topic_to_publish = "pub/room{}/tower{}/shelf{}"		# for now the room number shouldn't be set more than 1 and the tower/shelf number more than 2
+	payload: senML using "n" and "v" for sensor name and sensor value
+	sensors names: "ph", "moisture", "n", "p", "k", "height", "li" (light intensity), "temp", "humid", "water", "co2"
+
+	publish single value example:
+	we want to publish the ph sensor data of room1, tower2, shelf1
+	topic_to_publish = "pub/room1/tower2/shelf1"
+	payload: {
+		"e": [{"n": "ph", "u": "", "v": 6.8}],
+		"bn": ""
+	}
+
+	publish multiple values example:
+	we want to publish the n, p and k sensors values of room1, tower1, shelf2
+	topic_to_publish = "pub/room1/tower1/shelf2"
+	payload: {
+		"e": [
+			{"n": "n", "u": "kg/ha", "v": 300},
+			{"n": "p", "u": "kg/ha", "v": 15},
+			{"n": "k", "u": "kg/ha", "v": 180},
+		],
+		"bn": ""
+	}
+
+
+
+
+
+
+REST:
+
+to provide data for other microservices
+with or without specifying time ranges
+
+GET
+
+to get specific sensor values:
+
+	/retrieve?room={}&tower={}&shelf={}&sensor={}&last={}&start={}&end={}
+	
+
+	endpoint:
+		/retrieve
+	query params:
+		room (int; required): room number
+		tower (int; required): tower number
+		shelf (int; required): shelf number
+		sensor (string; required): sensor name (in case of shared sensors, the value for tower/shelf would not be parsed, room number sufficient)
+ 
+		last (int; optional; default: 25 at most): number, indicate the number of values to be returned from the most recent values registered (if exists)
+		start (datetime; optional; default: a long time ago) Start date in format YYYY-MM-DD%20HH:NN:SS
+		end (datetime; optional; default the time of request) End date in format YYYY-MM-DD%20HH:NN:SS
+
+	e.g.:
+		"/retrieve?room=1&tower=2&shelf=2&sensor=temp&last=50"
+			would retrieve a json object, consist of recent "50" "value" and their "time" for sensor "p" from room "1", tower "2" and shelf "2"
+		the result would be something like this:
+			{'feeds': [{'value': '89', 'time': '2024-03-18T10:29:02Z'}, {'value': '23', 'time': '2024-03-18T10:29:32Z'}, {'value': '73', 'time':
+			'2024-03-18T10:30:38Z'}, {'value': '25', 'time': '2024-03-18T10:33:07Z'}, {'value': '52', 'time': '2024-03-18T10:33:22Z'}, {'value': '74', 			'time': '2024-03-18T10:34:12Z'}, {'value': '49', 'time': '2024-03-18T10:36:09Z'}, {'value': '20', 'time': '2024-03-18T10:36:22Z'}, {'value': 			'52', 'time': '2024-03-18T10:36:42Z'}, {'value': '39', 'time': '2024-03-18T10:36:52Z'}, {'value': '21', 'time': '2024-03-18T10:37:02Z'}, 			{'value': '48', 'time': '2024-03-18T10:37:15Z'}, {'value': '93', 'time': '2024-03-18T10:37:25Z'}, {'value': '75', 'time': 					'2024-03-18T10:37:35Z'}, {'value': '93', 'time': '2024-03-22T12:09:17Z'}]}
+
+		"/retrieve?room=1&tower=2&shelf=1&sensor=temp&last=3"
+		last 3 results:  {'feeds': [{'value': '93', 'time': '2024-03-22T12:09:17Z'}]}
+
+		"/retrieve?room=1&tower=2&shelf=1&sensor=temp&start=2024-03-21 15:00:00"
+		strting time after some arbitrary time:  {'feeds': [{'value': '93', 'time': '2024-03-22T12:09:17Z'}]}
+
+
+DELETE
+
+to clear specific room/tower/shelf 
+	
+	/clear?room={}&tower={}&shelf={}
+	
+	endpoint:
+		/clear
+	query params:
+		room (int; required): room number
+
+		tower (int; optional, if specified the shelf number should be specified too): tower number
+		shelf (int; optional, becomes required if the tower param is set): shelf number
+
+	e.g.:
+		/clear?room=1
+		response: room 1 cleared.
+
+		/clear?room=1&shelf=2&tower=1
+		response: shelf 2 of tower 1 cleared.
+
+		/clear?room=1&shelf=2
+		response: Tower and Room must both be specified.
+			
+
+
+[TODO]
+HAVE TO FIND A WAY TO NOT CLEAR ALL FIELDS OF A CHANNEL SINCE THERE ARE SOME COMMON SENSORS IN TEH (TEMP ETC.) AND THEIR VALUES MUST NOT BE LOST
+THIS COULD BE DONE IN THIS WAY
+THERE WOULD TWO WAYS TO USING THIS CLEAR ENDPOINT:
+	1. CLEARING SELECTED SHELF (IN THIS CASE THE COMMON SENSORS WOULD NOT BE CLEARED, SO ONLY THE 1-7 FIELD OF EACH CHANNEL WOULD BE CLEARED)
+		IN CASE OF PARTIAL CLEARING THE VERY OLD VALUES FOR COMMON SENSORS SHOULD NOT BE USED (OR IN GENERAL FOR COMMON SENSORS WE DON'T USE VERY OLD TIME 		STAMPS, SO WE HAVE TO CONDUCT THE MANAGMENET IN INTERVALS OF E.G. 10 MINUTES TO HAVE AT LEAST 10 VALUES FOR TEMP AND THEN WE CAN BE SURE THERE ARE
+		NEW COMMING DATA THAT CAN BE USED FOR A NEWLY PLANTED SHELF OTHERWISE THE CHANNEL IS CLEARED AND THE DATA FOR SOME COMMON SENSOR IS. HAVE TO FIGURE OUT 		THIS INTERVAL IN THE MANANGEMENT MICROS TO BE CONSISTANT.)
+		fix: I can retrieve all the data of that sensor on that channel, clear the channel then upload all the data in bulk so we can make sure we have some of 		them restored (8xxx something record could be retrieved and I can make a bulk body to submit to thingspeak at one shot. brilient)
+	2. CLEARING WHOLE ROOM (IN THIS CASE ALL THE SHELFS WOULD BE CLEARED ALSO THE COMMON FIELDS I.E. THE 8 OF EACH CHANNEL WOULD BE CLEARED)
+
+
+

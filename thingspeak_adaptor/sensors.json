@@ -1,0 +1,4 @@
+{
+  "fixed": ["ph", "moisture", "n", "p", "k", "height", "li"],
+  "unfixed": ["temp", "humid", "co2", "water"]
+}

@@ -1,0 +1,78 @@
+{
+    "accounts": [
+        {
+            "id": 1,
+            "devices": [
+                {
+                    "client_id": "DwI4EBEHAQUwNR0CJzIZBiM",
+                    "username": "DwI4EBEHAQUwNR0CJzIZBiM",
+                    "password": "HgYyim4JxYz0mxeZegsD3Nin"
+                }
+            ],
+            "channels": [
+                {
+                    "id": 2462846,
+                    "write_api_key": "MQ7X1Y0B06E9QGVG",
+                    "read_api_key": "E6MLZ3CO4W7ZYUX5"
+                },
+                {
+                    "id": 2462863,
+                    "write_api_key": "G2Z5RP5VNA3PZ3DO",
+                    "read_api_key": "VX30V12KNP8XFXF4"
+                },
+                {
+                    "id": 2462864,
+                    "write_api_key": "ZKYMC4K1NCW6OWEI",
+                    "read_api_key": "XTICW4D4BWSB69TV"
+                },
+                {
+                    "id": 2462865,
+                    "write_api_key": "YN34DOV32MRMTAIK",
+                    "read_api_key": "VEDREHJP60E762Y9"
+                }
+            ],
+            "profile": {
+                "user_api_key": "6KDK0CAXG5J23JXQ"
+            }
+        }
+    ],
+    "broker": "mqtt3.thingspeak.com",
+    "port": 1883,
+    "endpoints": [
+        {
+            "name": "channel_list",
+            "url": "https://api.thingspeak.com/channels.json?api_key={}",
+            "method": "GET"
+        },
+        {
+            "name": "channel_feed",
+            "url": "https://api.thingspeak.com/channels/{}/feeds.json?api_key={}",
+            "method": "GET"
+        },
+        {
+            "name": "read_data",
+            "url": "https://api.thingspeak.com/channels/{}/fields/{}.json?results={}&start={}&end={}",
+            "method": "GET",
+            "params": [
+                "results",
+                "start",
+                "end"
+            ]
+        },
+        {
+            "name": "bulk_write",
+            "url": "https://api.thingspeak.com/channels/{}/bulk_update.json",
+            "method": "POST"
+        },
+        {
+            "name": "create_channel",
+            "url": "https://api.thingspeak.com/channels.json",
+            "method": "POST"
+        },
+        {
+            "name": "clear_channel",
+            "url": "https://api.thingspeak.com/channels/{}/feeds.json",
+            "method": "DELETE"
+        }
+    ]
+}

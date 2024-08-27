@@ -1,0 +1,4 @@
+requests
+cherrypy
+pillow
+telepot
