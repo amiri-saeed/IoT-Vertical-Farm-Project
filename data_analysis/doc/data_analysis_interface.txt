@@ -1,0 +1,129 @@
+# Data Analysis Microservice API Documentation
+
+## Introduction
+This document outlines the functionality and usage of the Data Analysis Microservice API. This API provides endpoints for retrieving data, performing analysis, and generating plots based on sensor data collected from different rooms and shelves.
+
+## REST
+
+
+### `GET /plot`
+- generate a plot of a given sensor for a specific sensor-room-tower-shelf
+- **Endpoint**: `/plot`
+- **Parameters**:
+  - `room`: Required (integer) - Points to the room from which the data is requested. (for now set it to 1 since we have 1 user in the system)
+  - `sensor`: Required (string) - Specifies the sensor type from the available list of sensors at the bottom of document.
+  - `tower`: Required if sensor is shelf-specific (integer) - Points to the tower within the room.
+  - `shelf`: Required if sensor is shelf-specific (integer) - Points to the shelf within the tower.
+  - `start`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the start date and time for data retrieval.
+  - `end`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the end date and time for data retrieval.
+- **Returns**: A base64 representation of the plot image.
+
+#### Example
+- **Request**: `GET /plot?room=1&tower=2&shelf=1&sensor=height&start=2001-02-02 12:00:15`
+- **Response**: `{"bs4_img": "/9j/4AAQSkZJRgABAQEAZ...ABRRRQAUUUUAFFFFAH//Z"}`
+
+
+
+### `GET /plot_compare_shelf`
+- generate a plot of different sensors in the same tower/shelf of the shelf-specific sensor type.
+- **Endpoint**: `/compare_plot_shelf`
+- **Parameters**:
+  - `room`: Required (integer) - Points to the room from which the data is requested. (for now set it to 1 since we have 1 user in the system)
+  - `sensor`: Required (string) - Should be from shelf-specific sensors
+  - `tower`: Required (integer) - Points to the tower within the room.
+  - `shelf`: Required (integer) - Points to the shelf within the tower.
+  - `start`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the start date and time for data retrieval.
+  - `end`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the end date and time for data retrieval.
+- **Returns**: A base64 representation of the plot image.
+
+#### Example
+- **Request**: `GET /plot?room=1&tower=2&shelf=1&sensor=height,li,moisture`
+- **Response**: `{"bs4_img": "/9j/4AAQSkZJRgABAQEAZ...ABRRRQAUUUUAFFFFAH//Z"}`
+
+
+
+### `GET /plot_compare_shelves`
+- generate a plot of the same sensor in different towers/shelves
+- **Endpoint**: `/compare_plot_shelves`
+- **Parameters**:
+  - `room`: Required (integer) - Points to the room from which the data is requested. (for now set it to 1 since we have 1 user in the system)
+  - `sensor`: Required (string) - Specifies the sensor type from the available list of sensors at the bottom of document.
+  - `start`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the start date and time for data retrieval.
+  - `end`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the end date and time for data retrieval.
+- **Returns**: A base64 representation of the plot image.
+
+#### Example
+- **Request**: `GET /plot?room=1&sensor=ph`
+- **Response**: `{"bs4_img": "/9j/4AAQSkZJRgABAQEAZ...ABRRRQAUUUUAFFFFAH//Z"}`
+
+
+
+### `GET /average`
+- **Endpoint**: `/average`
+- **Parameters**:
+  - `room`: Required (integer) - Points to the room from which the data is requested.
+  - `sensor`: Required (string) - Specifies the sensor type from the available list of sensors.
+  - `tower`: Required if sensor is shelf-specific (integer) - Points to the tower within the room.
+  - `shelf`: Required if sensor is shelf-specific (integer) - Points to the shelf within the tower.
+  - `start`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the start date and time for data retrieval.
+  - `end`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the end date and time for data retrieval.
+- **Returns**: A JSON response containing the average value.
+
+#### Example
+- **Request**: `GET /average?room=1&tower=2&shelf=1&sensor=temp`
+- **Response**: `{'avg': 52.357142857142854}`
+
+
+### `GET /min`
+- **Endpoint**: `/min`
+- **Parameters**:
+  - `room`: Required (integer) - Points to the room from which the data is requested.
+  - `sensor`: Required (string) - Specifies the sensor type from the available list of sensors.
+  - `tower`: Required if sensor is shelf-specific (integer) - Points to the tower within the room.
+  - `shelf`: Required if sensor is shelf-specific (integer) - Points to the shelf within the tower.
+  - `start`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the start date and time for data retrieval.
+  - `end`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the end date and time for data retrieval.
+- **Returns**: A JSON response containing the minimum value.
+
+#### Example
+- **Request**: `GET /min?room=1&sensor=temp`
+- **Response**: `{'min': 20.0}`
+
+
+### `GET /max`
+- **Endpoint**: `/max`
+- **Parameters**:
+  - `room`: Required (integer) - Points to the room from which the data is requested.
+  - `sensor`: Required (string) - Specifies the sensor type from the available list of sensors.
+  - `tower`: Required if sensor is shelf-specific (integer) - Points to the tower within the room.
+  - `shelf`: Required if sensor is shelf-specific (integer) - Points to the shelf within the tower.
+  - `start`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the start date and time for data retrieval.
+  - `end`: Optional (datetime, format: "YYYY-MM-DD HH:NN:SS") - Specifies the end date and time for data retrieval.
+- **Returns**: A JSON response containing the maximum value.
+
+#### Example
+- **Request**: `GET /max?room=1&tower=2&shelf=1&sensor=height`
+- **Response**: `{'max': 93.0}`
+
+
+
+## Sensors
+- **Room Specific Sensors**: "temp", "humid", "co2", "water"
+- **Shelf Specific Sensors**: "ph", "moisture", "n", "p", "k", "height", "li"
+
+
+## Additional Notes
+- For datetime parameters, use the format "YYYY-MM-DD HH:NN:SS".
+- Base64 image strings can be decoded using the provided code snippet.
+
+
+## Code Snippet for base64 to img
+'''
+import io
+import base64
+from PIL import Image
+bs4_img = response["bs4_img"]
+img = Image.open(io.BytesIO(base64.decodebytes(bytes(bs4_img, "utf-8"))))
+img.show() # or img.save()
+'''
+

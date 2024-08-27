@@ -1,0 +1,11 @@
+FROM python:3.9
+
+WORKDIR /app/nutrient_dosing_management
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 9092
+
+CMD ["python", "main.py"]

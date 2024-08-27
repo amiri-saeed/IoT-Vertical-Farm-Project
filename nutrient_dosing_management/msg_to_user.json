@@ -1,0 +1,36 @@
+{
+  "messages": [
+    {
+      "event": "ph_higher",
+      "msg": "Tower {tower_id}, Shelf {shelf_id}:\nOptimal pH band: {ph_low_catalog}-{ph_high_catalog}, Sensor pH: {ph_sensor}\npH is higher than maximum, Add Sulfuric acid to lower the pH."
+    },
+    {
+      "event": "ph_lower",
+      "msg": "Tower {tower_id}, Shelf {shelf_id}:\nOptimal pH band: {ph_low_catalog}-{ph_high_catalog}, Sensor pH: {ph_sensor}\npH is lower than minimum, Add Lime (calcium hydroxide) to raise the pH."
+    },
+    {
+      "event": "n_higher",
+      "msg": "Tower {tower_id}, Shelf {shelf_id}:\nOptimal N: {n_catalog}, Sensor N: {n_sensor}\nNitrogen is higher than optimal in soil, To lower nitrogen in soil: Add organic matter such as compost or mulch"
+    },
+    {
+      "event": "n_lower",
+      "msg": "Tower {tower_id}, Shelf {shelf_id}:\nOptimal N: {n_catalog}, Sensor N: {n_sensor}\nNitrogen is lower than optimal, To raise nitrogen in soil: Add nitrogen-rich fertilizers like ammonium sulfate or urea"
+    },
+    {
+      "event": "p_higher",
+      "msg": "Tower {tower_id}, Shelf {shelf_id}:\nOptimal P: {p_catalog}, Sensor P: {p_sensor}\nPhosphorus is significantly higher than optimal in soil. To lower phosphorus in soil, consider reducing the use of phosphorus-rich fertilizers."
+    },
+    {
+      "event": "p_lower",
+      "msg": "Tower {tower_id}, Shelf {shelf_id}:\nOptimal P: {p_catalog}, Sensor P: {p_sensor}\nPhosphorus is significantly lower than optimal. To raise phosphorus in soil, add phosphorus-rich fertilizers."
+    },
+    {
+      "event": "k_higher",
+      "msg": "Tower {tower_id}, Shelf {shelf_id}:\nOptimal K: {k_catalog}, Sensor K: {k_sensor}\nPotassium is significantly higher than optimal in soil. To lower potassium in soil, consider reducing the use of potassium-rich fertilizers."
+    },
+    {
+      "event": "k_lower",
+      "msg": "Tower {tower_id}, Shelf {shelf_id}:\nOptimal K: {k_catalog}, Sensor K: {k_sensor}\nPotassium is significantly lower than optimal. To raise potassium in soil, add potassium-rich fertilizers."
+    }
+  ]
+}

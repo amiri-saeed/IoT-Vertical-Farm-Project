@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT - Vertical Farming</title>
+    <style>
+        .tower-button {
+            margin-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>IoT - Vertical Farming</h1>
+    
+    <section id="rooms">
+        <h2>Rooms Management</h2>
+        <p>Add a new room to the building:</p>
+        <form id="addRoomForm">
+            <label for="roomName">Room Name:</label>
+            <input type="text" id="roomName" name="roomName" required>
+            <button type="button" onclick="addTower()" class="tower-button">Add Tower</button><br><br>
+            
+            <div id="towerDetails"></div>
+            
+            <button type="submit">Add Room</button>
+        </form>
+        <h3>Room Details</h3>
+        <table id="roomTable">
+            <thead>
+                <tr>
+                    <th>Room Name</th>
+                    <th>Number of Towers</th>
+                    <th>Shelves in Towers</th>
+                </tr>
+            </thead>
+            <tbody id="roomTableBody"></tbody>
+        </table>
+    </section>
+    
+    <section id="plants">
+        <h2>Plants Management</h2>
+        <!-- Add plants management content here -->
+    </section>
+
+    <script>
+        function addTower() {
+            const towerDetails = document.getElementById('towerDetails');
+            const towerNum = towerDetails.querySelectorAll('.tower').length + 1;
+            
+            const towerDiv = document.createElement('div');
+            towerDiv.classList.add('tower');
+            
+            const towerLabel = document.createElement('label');
+            towerLabel.textContent = `Tower ${towerNum} Shelves:`;
+            
+            const towerInput = document.createElement('input');
+            towerInput.type = 'number';
+            towerInput.name = `tower${towerNum}Shelves`;
+            towerInput.min = '1';
+            towerInput.max = '10'; // Set maximum number of shelves to 10
+            towerInput.required = true;
+            
+            towerDiv.appendChild(towerLabel);
+            towerDiv.appendChild(towerInput);
+            
+            towerDetails.appendChild(towerDiv);
+        }
+        
+        document.getElementById('addRoomForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get form data
+            const roomName = document.getElementById('roomName').value;
+            const numTowers = document.querySelectorAll('.tower').length;
+            const shelvesInTowers = Array.from(document.querySelectorAll('.tower input')).map(input => input.value);
+            
+            // Update table
+            const roomTableBody = document.getElementById('roomTableBody');
+            const newRow = document.createElement('tr');
+            const roomNameCell = document.createElement('td');
+            const numTowersCell = document.createElement('td');
+            const shelvesCell = document.createElement('td');
+            
+            roomNameCell.textContent = roomName;
+            numTowersCell.textContent = numTowers;
+            shelvesCell.textContent = shelvesInTowers.join(', ');
+            
+            newRow.appendChild(roomNameCell);
+            newRow.appendChild(numTowersCell);
+            newRow.appendChild(shelvesCell);
+            
+            roomTableBody.appendChild(newRow);
+            
+            // Clear form and tower details
+            document.getElementById('roomName').value = '';
+            document.getElementById('towerDetails').innerHTML = '';
+        });
+    </script>
+</body>
+</html>

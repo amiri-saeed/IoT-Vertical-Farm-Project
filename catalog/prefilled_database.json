@@ -1,0 +1,46 @@
+{
+    "plants": [
+        ["P1", "Romaine Lettuce", "L"],
+        ["P2", "Canasta Lettuce", "L"],
+        ["P3", "Blonde Di Lyon Swiss Chard", "SC"],
+        ["P4", "Ribbed Roman Swiss Chard", "SC"],
+        ["P5", "Alpine Strawberry", "S"],
+        ["P6", "Wild Strawberry", "S"],
+        ["P7", "San Marzano Tomato", "T"],
+        ["P8", "Florentine Ribbed Tomato", "T"]
+    ],
+    "plant_types": [
+        ["L", "Lettuce", 10, 20, 50, 50, 6, 7, 7, 24],
+        ["SC", "Swiss Chard", 10, 20, 50, 50, 6, 7.5, 10, 24],
+        ["T", "Tomato", 30, 60, 60, 85, 6, 6.8, 21, 29],
+        ["S", "Strawberries", 15, 30, 65, 65, 5.5, 6.5, 15, 27]
+    ],
+    "rooms": [
+        ["R1", "", "OFF", ""],
+        ["R2", "", "OFF", ""]
+    ],
+    "plant_nutrients": [
+        ["L", "Seeding", 0.95, 0.38, 0.76, 1.89, 17, 50, 70, 300, 800],
+        ["L", "Vegetative", 1.89, 0.76, 1.52, 3.79, 15, 60, 80, 800, 1200],
+        ["L", "Mature", 2.84, 1.14, 2.27, 5.68, 13, 70, 90, 1000, 1500],
+        ["SC", "Seeding", 1.14, 0.57, 0.95, 2.65, 17, 50, 70, 300, 800],
+        ["SC", "Vegetative", 2.27, 0.95, 1.9, 4.54, 15, 60, 80, 800, 1200],
+        ["SC", "Mature", 3.41, 1.34, 2.68, 6.81, 13, 70, 90, 1000, 1500],
+        ["T", "Seeding", 1.51, 0.76, 1.14, 3.41, 17, 50, 70, 300, 800],
+        ["T", "Vegetative", 3.02, 1.51, 2.27, 5.68, 15, 60, 80, 800, 1200],
+        ["T", "Mature", 4.53, 2.27, 3.41, 7.57, 13, 70, 90, 1000, 1500],
+        ["S", "Seeding", 1.32, 0.95, 0.76, 3.79, 17, 50, 70, 300, 800],
+        ["S", "Vegetative", 2.65, 7.89, 1.52, 5.68, 15, 60, 80, 800, 1200],
+        ["S", "Mature", 3.98, 2.84, 2.27, 7.57, 13, 70, 90, 1000, 1500]
+    ],
+    "shelves": [
+        ["R1", "T1", "S1", "P1", "Seeding", "ON", "", "GREEN", "", "OFF", ""],
+        ["R1", "T1", "S2", "P1", "Seeding", "ON", "", "GREEN", "", "OFF", ""],
+        ["R1", "T2", "S1", "P2", "Seeding", "ON", "", "GREEN", "", "OFF", ""],
+        ["R1", "T2", "S2", "P2", "Seeding", "ON", "", "GREEN", "", "OFF", ""],
+        ["R2", "T1", "S1", "P5", "Vegetative", "ON", "", "GREEN", "", "OFF", ""],
+        ["R2", "T1", "S2", "P5", "Vegetative", "ON", "", "GREEN", "", "OFF", ""],
+        ["R2", "T2", "S1", "P6", "Vegetative", "ON", "", "GREEN", "", "OFF", ""],
+        ["R2", "T2", "S2", "P6", "Vegetative", "ON", "", "GREEN", "", "OFF", ""]
+    ]
+}

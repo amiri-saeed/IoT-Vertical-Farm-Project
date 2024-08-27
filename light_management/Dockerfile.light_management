@@ -1,0 +1,11 @@
+FROM python:3.9
+
+WORKDIR /app/light_management
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 9095
+
+CMD ["python", "main.py"]
