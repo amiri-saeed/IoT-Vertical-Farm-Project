@@ -1,0 +1,139 @@
+services:
+  catalog:
+    build:
+      context: ./catalog
+      dockerfile: Dockerfile.catalog
+    ports:
+      - "8080:8080"
+    networks:
+      - my_network
+
+  nutrient_dosing_management:
+    build:
+      context: ./nutrient_dosing_management
+      dockerfile: Dockerfile.nutrient_dosing_management
+    ports:
+      - "8081:8081"
+    environment:
+      - CATALOG_HOST=catalog
+      - CATALOG_PORT=8080
+    networks:
+      - my_network
+    depends_on:
+      - catalog
+      - telegram_interface
+      # - device_connector_n
+
+  light_management:
+    build:
+      context: ./light_management
+      dockerfile: Dockerfile.light_management
+    ports:
+      - "8082:8082"
+    environment:
+      - CATALOG_HOST=catalog
+      - CATALOG_PORT=8080
+    networks:
+      - my_network
+    depends_on:
+      - catalog
+      - telegram_interface
+      # - device_connector_n
+
+  water_management:
+    build:
+      context: ./water_management
+      dockerfile: Dockerfile.water_management
+    ports:
+      - "8083:8083"
+    environment:
+      - CATALOG_HOST=catalog
+      - CATALOG_PORT=8080
+    networks:
+      - my_network
+    depends_on:
+      - catalog
+      - telegram_interface
+      # - device_connector_n
+
+  ventilation_management:
+    build:
+      context: ./ventilation_management
+      dockerfile: Dockerfile.ventilation_management
+    ports:
+      - "8084:8084"
+    environment:
+      - CATALOG_HOST=catalog
+      - CATALOG_PORT=8080
+    networks:
+      - my_network
+    depends_on:
+      - catalog
+      - telegram_interface
+      # - device_connector_n
+
+  data_analysis:
+    build:
+      context: ./data_analysis
+      dockerfile: Dockerfile.data_analysis
+    ports:
+      - "8085:8085"
+    environment:
+      - CATALOG_HOST=catalog
+      - CATALOG_PORT=8080
+    networks:
+      - my_network
+    depends_on:
+      - catalog
+      - thingspeak_adaptor
+
+  thingspeak_adaptor:
+    build:
+      context: ./thingspeak_adaptor
+      dockerfile: Dockerfile.thingspeak_adaptor
+    ports:
+      - "8086:8086"
+    environment:
+      - CATALOG_HOST=catalog
+      - CATALOG_PORT=8080
+    networks:
+      - my_network
+    depends_on:
+      - catalog
+
+  telegram_interface:
+    build:
+      context: ./telegram_interface
+      dockerfile: Dockerfile.telegram_interface
+    ports:
+      - "8089:8089"
+    environment:
+      - CATALOG_HOST=catalog
+      - CATALOG_PORT=8080
+    networks:
+      - my_network
+    depends_on:
+      - catalog
+      - data_analysis
+
+  nodered:
+    build:
+      context: ./nodered
+      dockerfile: Dockerfile
+    ports:
+      - "1880:1880"
+    environment:
+      - CATALOG_HOST=catalog
+      - CATALOG_PORT=8080
+    networks:
+      - my_network
+    depends_on:
+      - catalog
+      - data_analysis
+    volumes:
+      - ./nodered/data:/data
+    restart: unless-stopped
+
+networks:
+  my_network:
+    driver: bridge
