@@ -26,7 +26,7 @@ docker-compose up --build
 
 Promo:
 
-[![Everything Is AWESOME](https://img.youtube.com/vi/wZT18jJt0Zc/0.jpg)](https://www.youtube.com/watch?v=wZT18jJt0Zc)
+[![Everything Is AWESOME](https://i.sstatic.net/wZT18jJt0Zc.png)](https://youtu.be/wZT18jJt0Zc "Everything Is AWESOME")
 
 
 Demo:
