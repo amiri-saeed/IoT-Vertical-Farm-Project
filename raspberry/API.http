@@ -1,0 +1,85 @@
+### Shelf light OFF
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "shelf_light_001",
+    "command" : "off"
+}
+###
+# Shelf light ON
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "shelf_light_001",
+    "command" : "on"
+}
+
+###
+# Shelf light ON RED
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "status_light_001",
+    "command" : "red"
+}
+###
+# Shelf light ON YELLOW
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "status_light_001",
+    "command" : "yellow"
+}
+
+### Status light GREEN
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "status_light_001",
+    "command" : "green"
+}
+###
+# Status light OFF
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "status_light_001",
+    "command" : "off"
+}
+
+
+
+###
+# Ventilation OFF
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "ventilation_001",
+    "command" : "off"
+}
+###
+# Ventilation ON
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "ventilation_001",
+    "command" : "on"
+}
+
+
+###
+# Water pump OFF
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "water_pump_001",
+    "command" : "off"
+}
+###
+# Water pump ON
+POST http://192.168.1.254:8080 HTTP/1.1
+
+{
+    "actuator": "water_pump_001",
+    "command" : "on"
+}

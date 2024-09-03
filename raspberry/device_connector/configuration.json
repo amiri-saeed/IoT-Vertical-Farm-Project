@@ -1,0 +1,135 @@
+{
+    "post_resource_catalog": "http://10.241.8.146:8080/connect",
+    "device_id": "10.241.43.254",
+    "sensors": [
+        {
+            "sensor_id": "npk_001",
+            "room_id": "R1",
+            "tower_id": "T1",
+            "shelf_id": "S1",
+            "pins": {
+                "button": 6,
+                "RED": 16,
+                "GREEN": 26
+            },
+            "device_agent": "npk",
+            "file_path": "sensors/npk_sensors_measurements",
+            "file_name": "sensor_1",
+            "variables": [
+                "ID",
+                "Nitrogen",
+                "Phosphorus",
+                "Potassium",
+                "Timestamp"
+            ],
+            "range": {
+                "n": "2-3",
+                "p": "0.5-1",
+                "k": "3-4"
+            }
+        },
+        {
+            "sensor_id": "co2_001",
+            "room_id": "R1",
+            "tower_id": "T1",
+            "shelf_id": "S1",
+            "device_agent": "co2",
+            "file_path": "sensors/co2_measurements",
+            "file_name": "sensor_1",
+            "variables": [
+                "ID",
+                "CO2 level",
+                "Unit",
+                "Timestamp"
+            ],
+            "range": {
+                "baseline": "100",
+                "noise": "20"
+            }
+        },
+        {
+            "sensor_id": "pH_001",
+            "room_id": "R1",
+            "tower_id": "T1",
+            "shelf_id": "S1",
+            "device_agent": "pH",
+            "file_path": "sensors/pH_measurements",
+            "file_name": "sensor_1",
+            "variables": [
+                "ID",
+                "pH",
+                "Timestamp"
+            ],
+            "range": {
+                "baseline": "6.5",
+                "noise": "0.5"
+            }
+        },
+        {
+            "sensor_id": "dht22_001",
+            "room_id": "R1",
+            "tower_id": "T1",
+            "shelf_id": "S1",
+            "pins": {
+                "data": 19
+            },
+            "device_agent": "DHT"
+        },
+        {
+            "sensor_id": "HC-SR04_001",
+            "room_id": "R1",
+            "tower_id": "T1",
+            "shelf_id": "S1",
+            "pins": {
+                "TRIG": 4,
+                "ECHO": 17
+            },
+            "max_delay": 0.04,
+            "device_agent": "HCSR04"
+        }
+    ],
+    "actuators": [
+        {
+            "actuator_id": "ventilation_001",
+            "room_id": "R1",
+            "pins": {
+                "Motor1A": 24,
+                "Motor1B": 23,
+                "Motor1E": 25
+            },
+            "device_agent": "MOTOR3V"
+        },
+        {
+            "actuator_id": "status_light_001",
+            "room_id": "R1",
+            "tower_id" : "T1",
+            "shelf_id" : "S1",
+            "pins": {
+                "red": 14,
+                "yellow": 15,
+                "green": 18
+            },
+            "device_agent": "StatusLight"
+        },
+        {
+            "actuator_id": "shelf_light_001",
+            "room_id": "R1",
+            "tower_id" : "T1",
+            "shelf_id" : "S1",
+            "pins": {
+                "leds": 2
+            },
+            "device_agent": "UVLights"
+        },
+        {
+            "actuator_id": "water_pump_001",
+            "room_id": "R1",
+            "tower_id" : "T1",
+            "shelf_id" : "S1",
+            "pins": {
+                "blue": 12
+            },
+            "device_agent": "WaterPumps"
+        }
+    ]
+}
