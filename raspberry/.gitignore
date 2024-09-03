@@ -1,0 +1,14 @@
+logs/errorlog.trace
+logs/logs.trace
+sensors/npk_sensors_measurements/sensor_1.csv
+sensors/npk_sensors_measurements/sensor_2.csv
+device_connector/__pycache__/
+sensors/__pycache__/
+__pycache__/log.cpython-37.pyc
+sensors/npk_sensors_measurements/*
+sensors/co2_measurements/*
+sensors/pH_measurements/*
+sensors/water_level_measurements/
+sensors/__pycache__/
+__pycache__/
+venv/

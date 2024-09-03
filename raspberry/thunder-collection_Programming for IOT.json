@@ -1,0 +1,181 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Programming for IOT",
+    "collectionId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+    "dateExported": "2024-07-29T17:30:42.355Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e08a2a6f-5acb-46a6-8ae0-42568878680e",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "UV Lights OFF",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-07-26T15:19:06.890Z",
+            "modified": "2024-07-29T07:43:30.512Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"shelf_light_001\",\n    \"command\" : \"off\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "f05ff8a8-03c0-4d27-beea-de6f5ffa13a5",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "Water pump OFF",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-07-26T15:19:17.841Z",
+            "modified": "2024-07-26T22:47:11.939Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"water_pump_001\",\n    \"command\" : \"off\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "edf9c9a1-ed0c-409a-85f0-d9f1a41b53e2",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "UV Lights ON",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-07-29T07:42:49.442Z",
+            "modified": "2024-07-29T07:46:14.611Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"shelf_light_001\",\n    \"command\" : \"on\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "9b702497-ffe1-416a-96e5-1c6f77ed9fa6",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "Status light OFF",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-07-26T15:19:57.880Z",
+            "modified": "2024-07-26T22:46:15.967Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"status_light_001\",\n    \"command\" : \"green\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "fb693255-b245-4ad4-8b08-136a21d0cf5b",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "Ventilation OFF",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-07-27T19:25:01.131Z",
+            "modified": "2024-07-27T19:31:57.897Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"ventilation_001\",\n    \"command\" : \"off\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "99dfd080-7903-43ed-aff6-d0be63f9e3ec",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "Water pump ON",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-07-29T07:43:37.402Z",
+            "modified": "2024-07-29T07:47:15.956Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"water_pump_001\",\n    \"command\" : \"on\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "273eb061-1c25-4237-83e6-501f0df464b8",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "Status light YELLOW",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2024-07-29T07:44:01.730Z",
+            "modified": "2024-07-29T07:46:48.865Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"status_light_001\",\n    \"command\" : \"yellow\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "cc83f5cc-dd10-4f36-a31c-ee57cf02d11d",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "Status light GREEN",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-07-29T07:44:00.234Z",
+            "modified": "2024-07-29T07:44:00.234Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"status_light_001\",\n    \"command\" : \"green\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "de096a60-91ec-4cb7-b427-dc0eecea54c4",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "Ventilation ON",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-07-29T07:44:41.038Z",
+            "modified": "2024-07-29T07:48:54.412Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"ventilation_001\",\n    \"command\" : \"on\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "db69b367-d6eb-4479-bf8f-cd6dadd35701",
+            "colId": "218d38a1-5e41-4968-b53f-fa36e1a5f113",
+            "containerId": "",
+            "name": "Status light RED",
+            "url": "http://10.241.43.254:8080",
+            "method": "POST",
+            "sortNum": 45000,
+            "created": "2024-07-29T07:44:03.594Z",
+            "modified": "2024-07-29T07:44:35.930Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"actuator\": \"status_light_001\",\n    \"command\" : \"red\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "-kKRKuubdwrW7gLaT682LNyRuEMa73n7kd588DTwA5xYmR3OhrHkIcHIN3pQnRU1Bw343JZ7Zg6At9tQayrE4A"
+}

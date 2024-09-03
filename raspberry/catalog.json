@@ -1,0 +1,37 @@
+{
+    "rooms":[
+        {
+            "room": "room001",
+            "towers": [
+                "tower001",
+                "tower002"
+            ],
+            "devices":["raspberry001", "arduinoMKR001"]
+        }
+    ],
+    "devices":[
+        {
+            "device_id": "raspberry001",
+            "thingspeak_cannel" :"channel_room001", 
+            "thingspeak_API_RD" :"1234", 
+            "thingspeak_API_WR" :"5678" 
+        },
+        {
+            "device_id": "arduinoMKR001",
+            "thingspeak_cannel" :"channel_room001", 
+            "thingspeak_API_RD" :"1234", 
+            "thingspeak_API_WR" :"5678" 
+        }
+
+
+    ],
+    "users":[
+        {
+            "name": "farmer",
+            "rooms":["room001", "room002"],
+            "telegram_api":""
+        }
+    ]
+
+}
+
