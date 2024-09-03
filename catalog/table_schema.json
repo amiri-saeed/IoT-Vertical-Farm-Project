@@ -1,0 +1,14 @@
+{
+  "plants": ["plant_id TEXT", "plant_name TEXT", "type_id TEXT"],
+  "plant_types": ["type_id TEXT", "type_name TEXT", "vegetative_h FLOAT", "mature_h FLOAT", 
+    "humidity_day FLOAT", "humidity_night FLOAT", "low_ph FLOAT", "high_ph FLOAT", 
+    "low_temp FLOAT", "high_temp FLOAT"],
+  "rooms": ["room_id TEXT", "device_id TEXT", "ventilation TEXT", "ventilation_id TEXT"],
+  "plant_nutrients": ["type_id TEXT", "state TEXT", "N FLOAT", "P FLOAT", "K FLOAT", 
+    "liters FLOAT", "light FLOAT", "low_soil_moisture FLOAT", 
+    "high_soil_moisture FLOAT", "low_CO2 FLOAT", "high_CO2 FLOAT"],
+  "shelves": ["room_id TEXT", "tower_id TEXT", "shelf_id TEXT", "plant_id TEXT", "status TEXT", "light TEXT", 
+    "light_id TEXT", "status_light TEXT", "status_light_id TEXT", "water_pump TEXT", "water_pump_id TEXT"],
+  "topics": ["sensor_id TEXT", "device_id TEXT", "topic TEXT"],
+  "services" : ["name TEXT", "host TEXT", "port INT", "last_updated TEXT"]
+}
