@@ -26,10 +26,10 @@ docker-compose up --build
 
 Promo:
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/wZT18jJt0Zc/0.jpg)](https://www.youtube.com/watch?v=wZT18jJt0Zc)
+[![Everything Is AWESOME](https://img.youtube.com/vi/wZT18jJt0Zc/0.jpg)](https://www.youtube.com/watch?v=wZT18jJt0Zc)
 
 
 Demo:
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/N2z0TPrWoSc/0.jpg)](https://www.youtube.com/watch?v=N2z0TPrWoSc)
+[![Everything Is AWESOME](https://img.youtube.com/vi/N2z0TPrWoSc/0.jpg)](https://www.youtube.com/watch?v=N2z0TPrWoSc)
 
