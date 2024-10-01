@@ -11,7 +11,7 @@ import threading
 import requests
 import sys
 
-from Catalog import Catalog  # Assuming your class is in catalog.py
+from Catalog import Catalog
 
 # Define a global flag to track whether the thread should exit
 interrupted = False
